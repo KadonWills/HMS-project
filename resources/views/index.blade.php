@@ -86,9 +86,6 @@
                     Hospital Management System
                 </div>
 
-                <div class="links">
-                 
-                </div>
             </div>
         </div>
     </body>

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', 'RoleController@index');
 });
 
 Route::get('/roles', function () {
@@ -23,6 +23,17 @@ Route::get('/aboutus', function () {
     return view('template');
 });
 
+Route::resources([
+    'role' => 'RoleController',
+    'exampresc' => 'ExamprescController',
+    'User' => 'UserController'
+]);
+
+
+#Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+

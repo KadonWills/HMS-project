@@ -1,0 +1,43 @@
+body{
+    background-image: url(../images/diversity.jpg);
+}
+
+.panel{
+ max-width: 400px;
+ 
+}
+
+.panel-body{
+    padding-top: 70px;
+}
+
+.login{
+    float: right;
+    padding-top: 80px;
+}
+.icon{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+}
+.icon-container{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    background-color: dodgerblue;
+}
+.reg{
+    float: right;
+    padding-top: 20px;
+}
+.reg-body{
+    padding-top: 30px;
+}
+.icon-container-reg{
+    margin-top: 5px;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    background-color: dodgerblue;
+}

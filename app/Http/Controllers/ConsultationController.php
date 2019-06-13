@@ -1,78 +1,81 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\RoleModel;
-use Illuminate\Http\Request;
 
-class RoleController extends Controller
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\PatientModel;
+use DB;
+use App\UserModel;
+
+class ConsultationController extends Controller
 {
-    //This class contains all the buisiness logic involving roles
+    /**
+     * @author Mohamed Saphir <mohamedsaphir@gmail.com>
+     */
 
     /**
-     * Returns the view containning the roles
-     * 
-     * @author Kadon <kapolw@gmail.com>
-     * @param void
-     * @return \Illuminate\Http\Response
-     */
-    public function  displayRoles() {
-        return view('index', ['roles' => RoleModel::all()] );
-    }
-
-
-     /**
      * Display a listing of the resource.
      *
-     * @author Kadon <kapolw@gmail.com> 
-     * @param void
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $roles = RoleModel::findAll();
-        return view("index")->with('roles', $roles);
+        $patients = PatientModel::all();
+        
+        return view('consultation')->with('results',$patients);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @author Kadon <kapolw@gmail.com>
-     * @param void
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+       
+           //Creates Consultation
+           $newConsultation = new ConsultationModel;
+           $newConsultation->idUser = 1;
+           $newConsultation->fname = $request->input('fname');
+           $newConsultation->lname = $request->input('lname');
+           $newConsultation->PhoneNum = $request->input('PhoneNum');
+           $newConsultation->dob = $request->input('dob');
+           $newConsultation->address = $request->input('address');
+           $newConsultation->email = $request->input('email');
+           $newConsultation->gender = $request->input('gender');
+    //      $newConsultation_user->user_id = auth()->user()->id;
+ 
+          $newConsultation->save();
+          return redirect('consultation');
     }
 
     /**
      * Display the specified resource.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $patientInfo =  PatientModel::find($id);
+        return view('test')->with('patientInfo',$patientInfo);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -84,7 +87,6 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -97,7 +99,6 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -105,17 +106,4 @@ class RoleController extends Controller
     {
         //
     }
-
-    /**
-     * Deletes a role from the given roleId
-     * 
-     * @author Kadon <kapolw@gmail.com>
-     * @param Integer $id
-     * @return void
-     */
-    public function deleteRole($id){
-        
-    }
-
-    
 }

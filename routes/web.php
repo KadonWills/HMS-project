@@ -12,9 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', 'RoleController@index');
 });
 
+
+/*---------Patient Resource Route Begin---------------*/
+Route::resource('patients','PatientController');
+
+/*---------Patient Resource Route End---------------*/
+
+/*---------User Resource Route Begin---------------*/
+Route::resource('users','UserController');
+/*---------User Resource Route End---------------*/
+
+/*---------User Resource Route Begin---------------*/
+Route::resource('consultation','ConsultationController');
+
+/*---------User Resource Route End---------------*/
 Route::get('/roles', function () {
     return ;
 });
@@ -23,10 +37,19 @@ Route::get('/aboutus', function () {
     return view('template');
 });
 
-Auth::routes();
+Route::resources([
+    'role' => 'RoleController',
+    'exampresc' => 'ExamprescController',
+    'User' => 'UserController'
+]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+#Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
+
+Auth::routes();
 
 Route::get('/admin', function () {
     return view('admin');
 });
+
+

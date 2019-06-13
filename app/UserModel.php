@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RoleModel extends Model
+class UserModel extends Model
 {
     //
 }

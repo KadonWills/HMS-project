@@ -86,6 +86,11 @@
                     Hospital Management System
                 </div>
 
+                <div class="link">
+                    @foreach ( $roles as $r)
+                       <p> {{$r->name}} </p>
+                    @endforeach
+                </div>
             </div>  
         </div>
     </body>

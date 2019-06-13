@@ -1,78 +1,78 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\RoleModel;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\PatientModel;
 
-class RoleController extends Controller
+class PatientController extends Controller
 {
-    //This class contains all the buisiness logic involving roles
-
     /**
-     * Returns the view containning the roles
-     * 
-     * @author Kadon <kapolw@gmail.com>
-     * @param void
-     * @return \Illuminate\Http\Response
+     * @author Mohamed Saphir <mohamedsaphir@gmail.com>
      */
-    public function  displayRoles() {
-        return view('index', ['roles' => RoleModel::all()] );
-    }
-
-
-     /**
+     
+    /**
      * Display a listing of the resource.
      *
-     * @author Kadon <kapolw@gmail.com> 
-     * @param void
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $roles = RoleModel::findAll();
-        return view("index")->with('roles', $roles);
+        $patients = PatientModel::all();
+        
+        return view("test")->with('patients',$patients);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @author Kadon <kapolw@gmail.com>
-     * @param void
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+          //Create Patient
+          $newPatient = new PatientModel;
+          $newPatient->idUser = 1;
+          $newPatient->fname = $request->input('fname');
+          $newPatient->lname = $request->input('lname');
+          $newPatient->PhoneNum = $request->input('PhoneNum');
+          $newPatient->dob = $request->input('dob');
+          $newPatient->address = $request->input('address');
+          $newPatient->email = $request->input('email');
+          $newPatient->gender = $request->input('gender');
+   //      $newPatient->user_id = auth()->user()->id;
+
+         $newPatient->save();
+         return redirect('patient/create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $patientInfo =  PatientModel::find($id);
+        return view('test')->with('patient',$patientInfo);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -84,7 +84,6 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -97,7 +96,6 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @author Kadon <kapolw@gmail.com>
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -105,17 +103,4 @@ class RoleController extends Controller
     {
         //
     }
-
-    /**
-     * Deletes a role from the given roleId
-     * 
-     * @author Kadon <kapolw@gmail.com>
-     * @param Integer $id
-     * @return void
-     */
-    public function deleteRole($id){
-        
-    }
-
-    
 }

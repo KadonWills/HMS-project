@@ -15,3 +15,20 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+/*---------Patient Resource Route Begin---------------*/
+Route::resource('patients','PatientController');
+
+
+
+
+/*---------Patient Resource Route End---------------*/
+
+/*---------User Resource Route Begin---------------*/
+Route::resource('users','UserController');
+/*---------User Resource Route End---------------*/
+
+/*---------User Resource Route Begin---------------*/
+Route::resource('consultation','ConsultationController');
+
+/*---------User Resource Route End---------------*/

@@ -32,3 +32,14 @@ Route::resource('users','UserController');
 Route::resource('consultation','ConsultationController');
 
 /*---------User Resource Route End---------------*/
+Route::get('/roles', function () {
+    return ;
+});
+
+Route::get('/aboutus', function () {
+    return view('template');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

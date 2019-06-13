@@ -174,6 +174,7 @@ DROP TABLE IF EXISTS `rdv`;
 CREATE TABLE IF NOT EXISTS `rdv` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `use_id` int(11) NOT NULL,
+  `doc_id` int(11) NOT NULL,
   `patid` int(11) NOT NULL,
   `rdvdate` datetime DEFAULT NULL,
   `rdvtime` varchar(254) DEFAULT NULL,
@@ -229,6 +230,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `fname`, `dob`, `adress`, `gender`, `phonenum`, `email`, `login`, `password`, `sex`, `lname`, `speciality`, `created_at`, `updated_at`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, 'admin@gmail.com', 'admin', '$2y$10$sdx3nD2U7M9S4ioVRakaOOVorKT0PyGLMfOAFVRwo5y/z92S8PpfG', NULL, NULL, NULL, '2019-06-13 14:43:38', '2019-06-13 14:43:38');
 COMMIT;
+
+alter table rdv add constraint fk_association9 foreign key (doc_id)
+      references user (id) on delete restrict on update restrict;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

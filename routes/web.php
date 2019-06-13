@@ -19,9 +19,6 @@ Route::get('/', function () {
 /*---------Patient Resource Route Begin---------------*/
 Route::resource('patients','PatientController');
 
-
-
-
 /*---------Patient Resource Route End---------------*/
 
 /*---------User Resource Route Begin---------------*/
@@ -45,7 +42,6 @@ Route::resources([
     'exampresc' => 'ExamprescController',
     'User' => 'UserController'
 ]);
-
 
 #Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');

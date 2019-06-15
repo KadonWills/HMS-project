@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>HMS - @yield('title')</title>
 
   <!-- Fontawesome -->
@@ -42,7 +46,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="{{url('/')}}" class="logo"><b>RMS</b></a>
+      <a href="{{url('/')}}" class="logo"><b>HMS</b></a>
       <!--logo end-->
 
       <div class="top-menu">
@@ -72,7 +76,7 @@
           &copy;<strong>2019</strong>. Software Engineering
         </p>
         <div class="credits">
-          <a href="url('/')'">Hospital Management System</a>
+        <a href="{{url('/')}}">Hospital Management System</a>
         </div>
       </div>
     </footer>

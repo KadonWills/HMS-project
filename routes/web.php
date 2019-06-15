@@ -48,12 +48,14 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('admin', function () {
-    return view('admin');
+Route::get('/admin', function () {
+    return view('admin/admin');
 });
 
-Route::get('admin/users', function () {
-    return view('users');
+Route::get('/admin/users', function () {
+    return view('admin/users');
 });
 
-
+Route::get('/admin/priviledges', function () {
+    return view('admin/priviledges');
+});
